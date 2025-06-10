@@ -26,6 +26,7 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: stretch;
+    /* position:relative; */
 
 }
 
@@ -41,72 +42,221 @@ body {
     grid-template-columns: auto auto auto;
     gap: 1rem;
 
+
 }
-article{
+
+article {
     position: relative;
 }
-figure img{
+
+figure img {
     border-radius: 5px;
 }
-.cart-button{
-width: 150px;
-height: 30px;
-display: flex;
-justify-content: space-around;
-align-items: center;
-border-radius: 15px;
-border:solid 1px hsl(12, 20%, 44%);
-background-color: white;
-position: relative;
-top: -16px;
-right: -65px;
+
+.cart-button {
+    width: 150px;
+    height: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 15px;
+    border: solid 1px hsl(12, 20%, 44%);
+    background-color: white;
+    position: absolute;
+    top: 237px;
+    right: 63px;
+    z-index: 2;
 }
-.cart-button:hover{
-    color:hsl(14, 86%, 42%);
-    border:solid 1px hsl(14, 86%, 42%);
-} 
+
+.cart-plus-minus {
+    width: 150px;
+    height: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 15px;
+    border: 0px;
+    background-color: hsl(14, 86%, 42%);
+    color: white;
+    position: absolute;
+    top: 237px;
+    right: 63px;
+    z-index: 1;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.decrement {
+    width: 20px;
+    height: 20px;
+    border: 1px solid white;
+    border-radius: 50%;
+}
+
+.increment {
+    width: 20px;
+    height: 20px;
+    border: 1px solid white;
+    border-radius: 50%;
+}
+
+.cart-button:hover {
+    color: hsl(14, 86%, 42%);
+    border: solid 1px hsl(14, 86%, 42%);
+    cursor: pointer;
+}
 
 .grid-item {
     width: 100%;
     height: 100%;
+    position: relative;
 }
-figure{
+
+figure {
     margin: 0;
 }
+
 .image-contunet img {
     width: 300px;
     height: 250px;
 }
-.item-ctegory{
+
+.item-ctegory {
     color: hsl(14, 25%, 72%);
 }
-.tertiary-header{
-    color:hsl(14, 65%, 9%);
+
+.tertiary-header {
+    color: hsl(14, 65%, 9%);
     margin: 5px auto;
 }
+
 .item-price,
-.second-title{
-    color:hsl(14, 86%, 42%);
+.second-title {
+    color: hsl(14, 86%, 42%);
 }
 
 
-.said-warp{
+.said-warp {
     background-color: white;
     width: 350px;
     border-radius: 10px;
     margin-top: 30px;
+    margin-left: 20px;
     padding: 10px 20px 20px 10px;
 }
-.said-warp img{
+
+.said-warp img .piece-of-cake {
     padding-left: 100px;
 }
-.second-title{
-    padding-left:20px
+
+.second-title {
+    padding-left: 20px
 }
 
-.msg{
+.msg {
     color: hsl(12, 20%, 44%);
     text-align: center;
+}
+
+.empty-cart {
+    /* display: none; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.active {
+    display: block;
+}
+
+
+.heading-cart {
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.cart-items {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    border-bottom: 1px solid hsl(14, 25%, 72%);
+}
+
+.quantity {
+    color: hsl(14, 86%, 42%);
+}
+
+.each-item {
+    color: hsl(14, 25%, 72%);
+    padding-left: 20px;
+}
+
+.total-item {
+    color: hsl(12, 20%, 44%);
+}
+
+.cart-items button {
+    margin-left: 140px;
+}
+
+.close-icon {
+    background-color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    padding: 0;
+    border: 1px solid hsl(14, 25%, 72%);
+    cursor: pointer;
+}
+
+.order-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+}
+
+.orders {
+    color: hsl(14, 65%, 9%);
+}
+
+.totale-amount {
+    font-size: 32px;
+    font-weight: bolder;
+    color: hsl(14, 65%, 9%);
+}
+
+.delivery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: hsl(20, 50%, 98%);
+    margin-top: 0;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.conferm-order {
+    width: 100%;
+    height: 40px;
+    border-radius: 40px;
+    border: 0px;
+    background-color: hsl(14, 86%, 42%);
+    color: white;
+    cursor: pointer;
+}
+
+.conferm-order:hover {
+    background-color: hsl(14, 94%, 26%);
+}
+
+.carbon-netral {
+    width: bolder;
 }
 
 .attribution {
@@ -120,17 +270,18 @@ figure{
 
 @media screen and (max-width:600px) {
 
-    .inner-warp{
+    .inner-warp {
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
     }
+
     .grid-warp {
         display: grid;
         grid-template-columns: auto;
         gap: 1rem;
-    
+
     }
-    
+
 }
