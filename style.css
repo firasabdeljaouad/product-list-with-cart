@@ -218,7 +218,7 @@ figure {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 80px;
+    height: 65px;
 }
 
 .orders {
@@ -239,6 +239,7 @@ figure {
     margin-top: 0;
     padding: 10px;
     border-radius: 10px;
+    margin-bottom: 10px;
 }
 
 .conferm-order {

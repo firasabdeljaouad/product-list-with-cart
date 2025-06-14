@@ -10,8 +10,8 @@ document.addEventListener('DOMContentLoaded', function () {
             const emptyCart = document.querySelector('.empty-cart');
             const fullCart = document.querySelector('.full-cart');
             const numberTotal = document.querySelector('.number-total');
-            const totaleAmount = document.querySelector('.totale-amount')
-            const cartContainer = document.querySelector('.cart-container')
+            let totaleAmount = document.querySelector('.totale-amount').textContent.replace('$', '')
+            const order = document.querySelector('.order')
 
             data.forEach((dessert) => {
                 // Responsive image selection
@@ -59,9 +59,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     emptyCart.classList.add('hidden');
                     fullCart.classList.remove('hidden');
-
-
-
                     // Add item to cart
                     if (fullCart) {
                         cartItem = document.createElement('div');
@@ -78,10 +75,12 @@ document.addEventListener('DOMContentLoaded', function () {
                             </article>
 
                         `;
-                        // let value = parseInt(span.querySelector('.totaleAmount').textContent.replace('$',''))
-                        // totaleAmount.textContent() 
-                        
-
+                        // let totalItem = cartItem.querySelector('.total-item').textContent.replace('$','');
+                        // let totals = parseFloat(totalItem);
+                        // let valus = parseFloat(totaleAmount);
+                        // valus += totals
+                        // console.log(valus)
+                        // totaleAmount.textContent = valus.toFixed(2);
                         // Add remove functionality
                         const removeBtn = cartItem.querySelector('.close-icon');
                         removeBtn.addEventListener('click', function (e) {
@@ -97,30 +96,19 @@ document.addEventListener('DOMContentLoaded', function () {
                             }
 
                             // Show empty cart if no items left
-                            if (fullCart.children.length === 0) {
+                            if (order.children.length === 0) {
                                 emptyCart.classList.remove('hidden');
+                                fullCart.classList.add('hidden');
                             }
                             valueSpan.textContent = value - quantity
                             if (valueSpan.textContent = '0') {
-
                                 cartButton.classList.remove('hidden');
                                 cartPlusMinus.classList.add('hidden');
                             }
                         });
 
-                        fullCart.appendChild(cartItem);
+                        order.appendChild(cartItem);
                     }
-
-                    // let confermOrder = document.createElement('div')
-                    // confermOrder.classList.add('confirm-order');
-                    // confermOrder.innerHTML = `
-                    //     <div class="result-order">Order Total <span>$</span>
-                    //     </div>
-                    //     <div><img src="assets/images/icon-carbon-neutral.svg"> This is a <b>carbon-neutral delivery</b></div>
-                    //     <button>confirm Order</button>
-                    // `
-                    
-                    // fullCart.appendChild(confermOrder)
                 });
 
                 // Function to update quantity in cart
@@ -135,8 +123,11 @@ document.addEventListener('DOMContentLoaded', function () {
                         if (totalElement.textContent === '$0.00') {
                             cartItem.remove()
                         }
+
                     }
                 };
+
+
                 // Quantity controls
                 decrementBtn.addEventListener('click', function (e) {
                     e.stopPropagation();
@@ -162,7 +153,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         fullCart.classList.add('hidden');
                     }
                 });
-
                 incrementBtn.addEventListener('click', function (e) {
                     e.stopPropagation();
                     let value = parseInt(valueSpan.textContent);
@@ -172,10 +162,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (numberTotal.textContent !== "0") {
                         emptyCart.classList.add('hidden');
                         fullCart.classList.remove('hidden');
-
                     }
                 });
-
             });
         })
         .catch(error => {
