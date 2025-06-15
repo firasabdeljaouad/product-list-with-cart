@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const emptyCart = document.querySelector('.empty-cart');
             const fullCart = document.querySelector('.full-cart');
             const numberTotal = document.querySelector('.number-total');
-            let totaleAmount = document.querySelector('.totale-amount').textContent.replace('$', '')
+            let totaleAmount = document.querySelector('.totale-amount');
             const order = document.querySelector('.order')
 
             data.forEach((dessert) => {
@@ -59,6 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     emptyCart.classList.add('hidden');
                     fullCart.classList.remove('hidden');
+
                     // Add item to cart
                     if (fullCart) {
                         cartItem = document.createElement('div');
@@ -75,12 +76,16 @@ document.addEventListener('DOMContentLoaded', function () {
                             </article>
 
                         `;
-                        // let totalItem = cartItem.querySelector('.total-item').textContent.replace('$','');
-                        // let totals = parseFloat(totalItem);
-                        // let valus = parseFloat(totaleAmount);
-                        // valus += totals
-                        // console.log(valus)
-                        // totaleAmount.textContent = valus.toFixed(2);
+                        //     let totaleAmounts = 0;
+                        // cartItem.forEach((item) => {
+                        
+                        //     let totalItem = item.querySelector('.total-item').textContent.replace('$', '');
+                        //     let prix = parseFloat(totalItem);
+                        //     totaleAmounts += prix;
+                        // })
+                        //     totaleAmount.textContent = `$${totaleAmounts.toFixed(2)}`;
+                        //     console.log(totaleAmount);
+
                         // Add remove functionality
                         const removeBtn = cartItem.querySelector('.close-icon');
                         removeBtn.addEventListener('click', function (e) {
