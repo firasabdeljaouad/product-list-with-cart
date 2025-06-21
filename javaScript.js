@@ -76,15 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             </article>
 
                         `;
-                        //     let totaleAmounts = 0;
-                        // cartItem.forEach((item) => {
-                        
-                        //     let totalItem = item.querySelector('.total-item').textContent.replace('$', '');
-                        //     let prix = parseFloat(totalItem);
-                        //     totaleAmounts += prix;
-                        // })
-                        //     totaleAmount.textContent = `$${totaleAmounts.toFixed(2)}`;
-                        //     console.log(totaleAmount);
+
 
                         // Add remove functionality
                         const removeBtn = cartItem.querySelector('.close-icon');
@@ -114,7 +106,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
                         order.appendChild(cartItem);
                     }
+                    allPix ()
                 });
+
+                function allPix (){
+                    document.querySelector('.totale-amount').innerHTML =
+                        "$" + [...order.children].reduce((acc, curr) => {
+                            return acc + parseFloat(curr.querySelector(".total-item").textContent.replace("$", ""))
+                        }, 0)
+                }
 
                 // Function to update quantity in cart
                 const updateCartQuantity = (newQuantity) => {
@@ -150,6 +150,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             emptyCart.classList.add('hidden');
                             fullCart.classList.remove('hidden');
                         }
+                        
                     }
 
                     numberTotal.textContent = (parseInt(numberTotal.textContent) || 0) - 1;
@@ -157,6 +158,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         emptyCart.classList.remove('hidden');
                         fullCart.classList.add('hidden');
                     }
+                    allPix ();
                 });
                 incrementBtn.addEventListener('click', function (e) {
                     e.stopPropagation();
@@ -168,6 +170,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         emptyCart.classList.add('hidden');
                         fullCart.classList.remove('hidden');
                     }
+                    allPix ()
                 });
             });
         })
